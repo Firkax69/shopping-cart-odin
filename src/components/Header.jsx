@@ -1,30 +1,33 @@
 import React from 'react'
-import logo from '../assets/logo.svg';
-import shop from '../assets/shop.svg'
-import magnify from '../assets/magnify.svg'
+import Nav from './utils/Nav'
+import { ReactComponent as Logo } from '../assets/logo.svg'
+import { ReactComponent as Cart } from '../assets/cart.svg'
+import { ReactComponent as Magnify } from '../assets/magnify.svg'
 
+const Header = ({ toggleCart, cartItems }) => {
+  const computeItemsAmount = () => {
+    return cartItems.reduce((currentAmount, item) => currentAmount + item.amount, 0)
+  }
 
-const Header = () => {
-    return (
-        <header>
-            <div>
-                <img src={logo} alt='Logo' />
-                <h1 className='title'>Kov-Ihor Shop</h1>
-            </div>
-            <nav>
-                <ul className='container nav gap'>
-                    <li className='nav-item active'>Home</li>
-                    <li className='nav-item'>Shop</li>
-                    <li className='nav-item'>Contacts</li>
-                </ul>
-            </nav>
-            <div className='container gap'>
-                <img src={shop} alt='shop' className='icon' />
-                <img src={magnify} alt='Logmagnifyo' className='icon' />
-                <button className='btn'>Log in</button>
-            </div>
-        </header>
-    )
+  return (
+    <header>
+      <div className='container'>
+        <img className='icon' src={Logo} alt='Logo>'/>
+        <h1 className='title'>SneakShop</h1>
+      </div>
+      <Nav />
+      <div className='container gap'>
+        <div className='cart-icon' onClick={toggleCart}>
+          <img src={Cart} alt='Cart>' className='icon'/>
+
+          <div className='cart-amount'>{computeItemsAmount()}</div>
+        </div>
+        <img className='icon' src={Magnify} alt='Magnify>'/>
+
+        <button className='btn'>Log in</button>
+      </div>
+    </header>
+  )
 }
 
-export default Header;
+export default Header
