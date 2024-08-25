@@ -9,7 +9,7 @@ const Header = () => {
         <header>
             <div>
                 <img src={logo} alt='Logo' />
-                <h1 className='title'>KovalevskyiIhorShop</h1>
+                <h1 className='title'>Kov-Ihor Shop</h1>
             </div>
             <nav>
                 <ul className='container nav gap'>
